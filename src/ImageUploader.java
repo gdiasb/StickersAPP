@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 public class ImageUploader {
 
   public String[] uploader() throws IOException, InterruptedException {
+
     
     File folder = new File("./stickers");
     String array[] = folder.list();

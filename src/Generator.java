@@ -1,17 +1,11 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.imageio.ImageIO;
-
 public class Generator {
-  /**
-   * @param movie
-   */
 
   public static void create(InputStream movieURL, String movieTitle) {
 
@@ -19,8 +13,8 @@ public class Generator {
     try {
       BufferedImage poster = ImageIO.read(movieURL);
 
-      Integer posterWidth = poster.getWidth();
-      Integer posterHeight = poster.getHeight();
+      int posterWidth = poster.getWidth();
+      int posterHeight = poster.getHeight();
 
 
       BufferedImage resizedPoster = new BufferedImage(posterWidth, posterHeight + 200, BufferedImage.TRANSLUCENT);
@@ -46,7 +40,7 @@ public class Generator {
         folder.mkdirs();
       }
 
-      ImageIO.write(resizedPoster, "png", new File(folderName + "/" + movieTitle + ".png"));
+      ImageIO.write(resizedPoster, "png", new File(folderName + "/" + movieTitle.replaceAll(" ", "_") + ".png"));
       
     } catch (IOException e) {
       e.printStackTrace();

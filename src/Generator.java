@@ -40,7 +40,9 @@ public class Generator {
         folder.mkdirs();
       }
 
-      ImageIO.write(resizedPoster, "png", new File(folderName + "/" + movieTitle.replaceAll(" ", "_") + ".png"));
+      String formatedMovieTitle = movieTitle.replaceAll(" ", "_").replaceAll(":", "");
+
+      ImageIO.write(resizedPoster, "png", new File(folderName + "/" + formatedMovieTitle + ".png"));
       
     } catch (IOException e) {
       e.printStackTrace();
